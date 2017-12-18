@@ -11,13 +11,16 @@
     crossorigin="anonymous"></script>
 </head>
 <body>
-    <!-- should create a button for searching buttons. will be green. -->
   <div id="myButton"></div>
-  <!-- button type is a submit button -->
-    <button type="submit" id="submit" class="btn btn-success"></button> 
-            
+  <!-- making the submit button -->
     <div id="displays"></div>
-        <!-- i am missing stuff and that is part of why my page wont display along with missing buttons will fix during lunch -->
+    <div class="searchBar">
+            <form id="surf-form" onsubmit="return false">
+            <label for="surf-input">Search for some Surf</label>
+            <input type="text" id="surf-input">
+            <input id="addsurf" type="submit" value="Submit">
+            </form>
+        </div>
     
     
 

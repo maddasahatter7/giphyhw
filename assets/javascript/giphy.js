@@ -10,9 +10,10 @@
 
 
 // variable with my array of strings (topics)
-var buttonArray = ["surfboard", "sharks", "beach", "jellyfish"];
 $(document).ready(function () {
-	
+var buttonArray = ["surfboard", "sharks", "beach", "jellyfish"];
+
+
     function getButtons() {
         $("#myButton").empty();
         //Here is where the for loop that runs through the buttons will be
@@ -34,7 +35,7 @@ $(document).ready(function () {
         inputButton = $(this).attr("data-name");
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + inputButton + "&rating=pg&limit=10&api_key=TpUAYaPAU2WQdsATriB4d6DUAbf8Oprx";
         //giphy link and api key here will enable us to be able to get the gifs
-        // the ajax calls the function
+        // the ajax holds the two arguments- query url and get. calls the function
         $.ajax({
             url: queryURL,
             method: "GET"
@@ -49,9 +50,9 @@ $(document).ready(function () {
                 var resultx = $("<div>");
                 //how to get gif rating to display. will pop up as "Rated: "rating goes here"... well..should
                 var r = $("<p>").text("Rated: " + result[i].rating);
-
+                // another dynamic
                 var viewableImage = $("<img>");
-
+                // the status of the image. (still or animated)
                 viewableImage.attr("src", result[i].images.fixed_height_still.url);
                 viewableImage.attr("status", "still");
                 viewableImage.attr("still", result[i].images.fixed_height_still.url)
@@ -68,9 +69,9 @@ $(document).ready(function () {
 }
     $("#submit").on("click", function (event) {
         event.preventDefault();
-        var surf = $("#surf-s").val().trim();
-        console.log(surf);
-        buttonArray.push(surf);
+        var result = $("#addsurf").val() .trim();
+        console.log(result);
+        buttonArray.push(result);
         buttonActions();
     })
     // if else statements that make the gifs wither pause or become animated
