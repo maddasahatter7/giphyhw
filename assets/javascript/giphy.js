@@ -14,20 +14,22 @@ $(document).ready(function () {
 var buttonArray = ["surfboard", "sharks", "beach", "jellyfish"];
 
 
+
     function getButtons() {
-        $("#myButton").empty();
-        //Here is where the for loop that runs through the buttons will be
-        var button = $("<button>");
+        // $("#myButton").empty();
+        // Here is where the for loop that runs through the buttons will be
         for (var i = 0; i < buttonArray.length; i++) {
-            console.log(buttonArray[i])
-        
+            var button = $("<button>");
+            button.text(buttonArray[i]);
             //adding attributes to the button like the name and getting it to the page
             button.attr("data-name", buttonArray[i]);
             button.addClass("surfing-button");
-            button.text(buttonArray[i]);
             $("#myButton").append(button);
+            console.log(button);
+
         }
     }
+    getButtons();
      
    function buttonActions() {
     $(document).on("click", ".surfing-button", function () {
@@ -67,14 +69,22 @@ var buttonArray = ["surfboard", "sharks", "beach", "jellyfish"];
         })
     });
 }
-    $("#submit").on("click", function (event) {
+    $("#addsurf").on("click", function (event) {
         event.preventDefault();
-        var result = $("#addsurf").val() .trim();
-        console.log(result);
+        // $("#myButton").empty();
+        var result = $("#surf-input").val().trim();
+        var buttonAdd = $("<button>");
+            //adding attributes to the button like the name and getting it to the page
+            buttonAdd.attr("data-name", result);
+            buttonAdd.addClass("surfing-button");
+            buttonAdd.text(result);
+            $("#myButton").append(buttonAdd);
+    
         buttonArray.push(result);
+        console.log(result);
         buttonActions();
     })
-    // if else statements that make the gifs wither pause or become animated
+    // if else statements that make the gifs either pause or become animated
     // if still, make animated
     $(document).on("click", ".surf-gifs", function () {
         if ($(this).attr("status") == "still") {
